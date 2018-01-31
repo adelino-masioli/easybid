@@ -23,15 +23,32 @@ class SettingFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'      => 'required|unique:settings',
-            'email'     => 'required|unique:settings',
-            'telephone' => 'required',
-            'cellphone' => 'required',
-            'zipcode'   => 'required',
-            'address'   => 'required',
-            'state_id'  => 'required',
-            'city_id'   => 'required',
-        ];
+        if($this->method() == 'POST')
+        {
+            return [
+                'name'      => 'required|unique:settings',
+                'email'     => 'required|email|unique:settings',
+                'telephone' => 'required',
+                'cellphone' => 'required',
+                'zipcode'   => 'required',
+                'address'   => 'required',
+                'state_id'  => 'required',
+                'city_id'   => 'required',
+            ];
+        } elseif($this->method() == 'PUT')
+        {
+            return [
+                'name'      => 'required|unique:settings,name,' . $this->get('id'),
+                'email'     => 'required|email|unique:settings,email,' . $this->get('id'),
+                'telephone' => 'required',
+                'cellphone' => 'required',
+                'zipcode'   => 'required',
+                'address'   => 'required',
+                'state_id'  => 'required',
+                'city_id'   => 'required',
+            ];
+        }else{
+            return [];
+        }
     }
 }

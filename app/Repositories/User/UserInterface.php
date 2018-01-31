@@ -5,10 +5,8 @@ namespace App\Repositories\User;
 interface UserRepositoryInterface
 {
     public function index();
-    public function create();
     public function store($request);
-    public function edit($id);
-    public function update($request);
-    public function destroy($request);
-    public function duplicate();
+    public function show($user);
+    public function update($request, $user);
+    public function destroy($request, $user);
 }

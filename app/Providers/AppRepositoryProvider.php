@@ -25,6 +25,7 @@ class AppRepositoryProvider extends ServiceProvider
     {
         $models = array(
             'Setting',
+            'User',
             'Status'
         );
 

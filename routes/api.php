@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace'=>'Api\\'], function (){
     //resources
     Route::resources([
-        'v1/settings' => 'SettingController'
+        'v1/settings' => 'SettingController',
+        'v1/users' => 'UserController'
     ]);
 });
